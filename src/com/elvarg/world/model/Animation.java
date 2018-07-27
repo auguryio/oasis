@@ -22,7 +22,7 @@ public class Animation {
 	 */
 	public Animation(int id, Priority priority) {
 		this.id = id;
-		this.delay = 0;
+		this.delay = 2;
 		this.priority = priority;
 	}
 	
@@ -32,7 +32,7 @@ public class Animation {
 	 */
 	public Animation(int id) {
 		this.id = id;
-		this.delay = 0;
+		this.delay = 2;
 		this.priority = Priority.LOW;
 	}
 	

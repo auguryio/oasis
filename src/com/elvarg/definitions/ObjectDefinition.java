@@ -207,7 +207,15 @@ public final class ObjectDefinition {
 			objectDef.interactions = new String[5];
 			objectDef.interactions[0] = "Pull";
 			objectDef.interactions[1] = null;
-			objectDef.name = "Lever";
+			objectDef.name = "LEVER";
+		}
+
+		if (id == 5960) {
+		objectDef.isInteractive = true;
+		objectDef.interactions = new String[5];
+		objectDef.interactions[0] = "Pull";
+		objectDef.interactions[1] = null;
+		objectDef.name = "LEVER";
 		}
 		if (id == 1293) {
 			objectDef.isInteractive = true;

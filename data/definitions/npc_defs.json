@@ -162,6 +162,16 @@
 		"npcId": 521,
         "name": "Fairy",
 		"examine": "He seems to know how to have fun!"
+	}, 
+	{
+		"npcId": 1600,
+        "name": "Gundai",
+		"examine": "Banker of the Wilderness"
+	}, 
+	{
+		"npcId": 1601,
+        "name": "Lundali",
+		"examine": "Deep Wildy's One stop Shop"
     }, 
 	{
 		"npcId": 506,

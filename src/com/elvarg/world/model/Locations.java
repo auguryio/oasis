@@ -32,6 +32,7 @@ public class Locations {
 			public void process(Player player) {
 				int y = player.getPosition().getY();
 				player.setWildernessLevel(((((y > 6400 ? y - 6400 : y) - 3520) / 8)+1));
+				player.getPacketSender().sendString(548, "Level: "+player.getWildernessLevel());
 			}
 
 			@Override
@@ -51,7 +52,7 @@ public class Locations {
 
 			@Override
 			public boolean canTeleport(Player player) {
-				if(player.getWildernessLevel()> 20 && player.getRights() != PlayerRights.DEVELOPER) {
+				if(player.getWildernessLevel() > 20 && player.getRights() != PlayerRights.DEVELOPER) {
 					player.getPacketSender().sendMessage("Teleport spells are blocked in this level of Wilderness.");
 					player.getPacketSender().sendMessage("You must be below level 20 of Wilderness to use teleportation spells.");
 					return false;
@@ -110,6 +111,7 @@ public class Locations {
 			this.x = x;
 			this.y = y;
 			this.multi = multi;
+			this.single = single;
 			this.summonAllowed = summonAllowed;
 			this.followingAllowed = followingAllowed;
 			this.cannonAllowed = cannonAllowed;
@@ -119,6 +121,7 @@ public class Locations {
 
 		private int[] x, y;
 		private boolean multi;
+		private boolean single;
 		private boolean summonAllowed;
 		private boolean followingAllowed;
 		private boolean cannonAllowed;
@@ -140,6 +143,15 @@ public class Locations {
 					return true;
 			}
 			return gc.getLocation().multi;
+		}
+
+		public static boolean inSingle(Character gc) {
+			if(gc.getLocation() == WILDERNESS) {
+				int x = gc.getPosition().getX(), y = gc.getPosition().getY();
+				if(x >= 3465 && y >= 3454 || x >= 3465 && x <= 3505  && y >= 3454 && y <= 3535 || x >= 3427 && x <= 3433 && y >= 3533 && y <= 3524 || x >= 3453 && x <= 3503 && y >= 3526 && y <= 3440)
+					return true;
+			}
+			return gc.getLocation().single;
 		}
 
 		public boolean isSummoningAllowed() {
@@ -256,6 +268,11 @@ public class Locations {
 						player.getPacketSender().sendMultiIcon(1);
 				} else if(player.getMultiIcon() == 1)
 					player.getPacketSender().sendMultiIcon(0);
+					if(Location.inSingle(player)) {
+						if(player.getsingleIcon() != 1)
+							player.getPacketSender().sendSingleIcon(1);
+					} else if(player.getsingleIcon() == 1)
+						player.getPacketSender().sendSingleIcon(0);
 			}
 		} else {
 			Location prev = gc.getLocation();
@@ -263,6 +280,8 @@ public class Locations {
 				Player player = (Player) gc;
 				if(player.getMultiIcon() > 0)
 					player.getPacketSender().sendMultiIcon(0);
+					if(player.getsingleIcon() > 0)
+					player.getPacketSender().sendSingleIcon(0);
 				if(player.getWalkableInterfaceId() > 0)
 					player.getPacketSender().sendWalkableInterface(-1);
 				if(player.getPlayerInteractingOption() != PlayerInteractingOption.NONE) {

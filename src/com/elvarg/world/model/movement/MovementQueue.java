@@ -316,14 +316,14 @@ public final class MovementQueue {
 		}
 
 		//Are we following in combat?
-		boolean combatFollow = CombatFactory.isAttacking(character);		
-		
+		boolean combatFollow = CombatFactory.isAttacking(character);
+
 		//The amount of distance between us and the other character.
 		final int distance = character.getPosition().getDistance(followCharacter.getPosition());
-		
+
 		//Should movement be reset?
 		boolean resetMovement = false;
-		
+
 		//Reset movement if we're in character size range.
 		if(distance <= character.getSize()) {
 			resetMovement = true;
@@ -342,13 +342,13 @@ public final class MovementQueue {
 					return;
 				}
 			}
-			
+
 			character.getMovementQueue().reset();
 			character.getMovementQueue().setFollowCharacter(null);
 			return;
-			
-		} 
-		
+
+		}
+
 		//If we are combat following, make sure to reset movement once we are in striking range.
 		else if(combatFollow && CombatFactory.canReach(character, CombatFactory.getMethod(character), character.getCombat().getTarget())) {
 			resetMovement = true;
@@ -360,7 +360,7 @@ public final class MovementQueue {
 			return;
 		}
 
-		if(combatFollow) {					
+		if(combatFollow) {
 
 			/*
 			 * Handle combat following
@@ -402,7 +402,7 @@ public final class MovementQueue {
 	}
 	/**
 	 * Gets the size of the queue.
-	 * 
+	 *
 	 * @return The size of the queue.
 	 */
 	public int size() {
@@ -424,7 +424,7 @@ public final class MovementQueue {
 			character.getMovementQueue().walkStep(0, 1);
 	}
 
-	public static int getMove(int x, int p2, int size) { 
+	public static int getMove(int x, int p2, int size) {
 		if ((x - p2) == 0) {
 			return 0;
 		} else if ((x - p2) < 0) {

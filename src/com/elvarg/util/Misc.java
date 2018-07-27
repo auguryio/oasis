@@ -19,7 +19,6 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 import java.util.zip.GZIPInputStream;
-
 import com.elvarg.world.entity.impl.player.Player;
 import com.elvarg.world.model.Item;
 import com.elvarg.world.model.Position;

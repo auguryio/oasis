@@ -12,6 +12,8 @@ import com.elvarg.net.packet.PacketListener;
 import com.elvarg.util.Misc;
 import com.elvarg.util.PlayerPunishment;
 import com.elvarg.world.World;
+import com.elvarg.world.content.Dueling;
+import com.elvarg.world.content.Dueling.DuelState;
 import com.elvarg.world.content.Feed;
 import com.elvarg.world.content.SkillManager;
 import com.elvarg.world.content.Toplist;
@@ -156,44 +158,44 @@ public class CommandPacketListener implements PacketListener {
 		} else if(parts[0].startsWith("kdr")) {
 			player.forceChat("I currently have "+player.getKillDeathRatio()+" kdr!");
 		} else if(parts[0].startsWith("pvp")) {
-			if(player.busy() || player.getLocation() == Location.WILDERNESS) {
-				player.getPacketSender().sendMessage("You Cannot Use Commands To Teleport Out Of Wilderness.");
+			if(player.busy() || player.getLocation() == Location.WILDERNESS || player.getDueling().inDuel()) {
+				player.getPacketSender().sendMessage("You Cannot Do That Here");
 				return;
 			}
 			TeleportHandler.teleport(player, new Position(3510, 3483), TeleportType.ANCIENT);
 			} else if(parts[0].startsWith("mb")) {
-			if(player.busy() || player.getLocation() == Location.WILDERNESS) {
-				player.getPacketSender().sendMessage("You Cannot Use Commands To Teleport Out Of Wilderness.");
+			if(player.busy() || player.getLocation() == Location.WILDERNESS || player.getDueling().inDuel()) {
+				player.getPacketSender().sendMessage("You Cannot Do That Here");
 				return;
 			}
 			TeleportHandler.teleport(player, new Position(2538, 4718), TeleportType.ANCIENT);
 			} else if(parts[0].startsWith("home")) {
-			if(player.busy() || player.getLocation() == Location.WILDERNESS) {
-				player.getPacketSender().sendMessage("You Cannot Use Commands To Teleport Out Of Wilderness.");
+				if(player.busy() || player.getLocation() == Location.WILDERNESS || player.getDueling().inDuel()) {
+				player.getPacketSender().sendMessage("You Cannot Do That Here");
 				return;
 			}
 			TeleportHandler.teleport(player, new Position(3101, 3510), TeleportType.ANCIENT);
 		} else if(parts[0].startsWith("35")) {
-			if(player.busy() || player.getLocation() == Location.WILDERNESS) {
-				player.getPacketSender().sendMessage("You Cannot Use Commands To Teleport Out Of Wilderness.");
+			if(player.busy() || player.getLocation() == Location.WILDERNESS || player.getDueling().inDuel()) {
+				player.getPacketSender().sendMessage("You Cannot Do That Here");
 				return;
 			}
 			TeleportHandler.teleport(player, new Position(3097, 3795), TeleportType.ANCIENT);
 		} else if(parts[0].startsWith("vespula")) {
-			if(player.busy() || player.getLocation() == Location.WILDERNESS) {
-				player.getPacketSender().sendMessage("You Cannot Use Commands To Teleport Out Of Wilderness.");
+			if(player.busy() || player.getLocation() == Location.WILDERNESS || player.getDueling().inDuel()) {
+				player.getPacketSender().sendMessage("You Cannot Do That Here");
 				return;
 			}
 			TeleportHandler.teleport(player, new Position(3355, 3920), TeleportType.ANCIENT);
 		} else if(parts[0].startsWith("torture")) {
-			if(player.busy() || player.getLocation() == Location.WILDERNESS) {
-				player.getPacketSender().sendMessage("You Cannot Use Commands To Teleport Out Of Wilderness.");
+			if(player.busy() || player.getLocation() == Location.WILDERNESS || player.getDueling().inDuel()) {
+				player.getPacketSender().sendMessage("You Cannot Do That Here");
 				return;
 			}
 			TeleportHandler.teleport(player, new Position(2954, 3749), TeleportType.ANCIENT);
 		} else if(parts[0].startsWith("graves")) {
-			if(player.busy() || player.getLocation() == Location.WILDERNESS) {
-				player.getPacketSender().sendMessage("You Cannot Use Commands To Teleport Out Of Wilderness.");
+			if(player.busy() || player.getLocation() == Location.WILDERNESS || player.getDueling().inDuel()) {
+				player.getPacketSender().sendMessage("You Cannot Do That Here");
 				return;
 			}
 			TeleportHandler.teleport(player, new Position(3148, 3672), TeleportType.ANCIENT);

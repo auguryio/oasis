@@ -88,6 +88,7 @@ public class ButtonClickPacketListener implements PacketListener {
 				player.getPacketSender().sendMessage("You cannot do that right now.");
 			}
 			break;
+
 			
 		case CLOSE_SETTINGS:
 			player.getPacketSender().sendTabInterface(11, 42500);
@@ -173,6 +174,7 @@ public class ButtonClickPacketListener implements PacketListener {
 				player.getPacketSender().sendMessage("Your experience is now @red@unlocked.");
 			}
 			break;
+
 
 		case CLOSE_BUTTON_1:
 		case CLOSE_BUTTON_2:
@@ -305,9 +307,13 @@ public class ButtonClickPacketListener implements PacketListener {
 	private static final int OPEN_PRESETS = 31015;
 	
 	//Settings tab
-	private static final int OPEN_SETTINGS = 42511;
+	private static final int OPEN_SETTINGS = 19156;
 	private static final int CLOSE_SETTINGS = 23020;
-	private static final int OPEN_KEY_BINDINGS = 23019;
+	private static final int OPEN_KEY_BINDINGS = 42511;
+
+	//Quest Tab JParks
+
+
 
 	//Dialogues
 	public static final int FIRST_DIALOGUE_OPTION_OF_FIVE = 2494;

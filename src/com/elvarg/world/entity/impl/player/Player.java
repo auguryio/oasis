@@ -551,15 +551,17 @@ public class Player extends Character {
 	private PlayerRights rights = PlayerRights.PLAYER;
 	private PlayerStatus status = PlayerStatus.NONE;
 	private ClanChat currentClanChat;
-	private String clanChatName = "Mist";
+	private String clanChatName = "Help";
 	private Dialogue dialogue;
 	private Shop shop;
 	private int interfaceId = -1, walkableInterfaceId = -1, multiIcon;
+	private int interfaceId1 = -1, walkableInterfaceId1 = -1, singleIcon;
 	private boolean isRunning = true;
 	private int runEnergy = 100;
 	private boolean isDying;
 	private boolean regionChange, allowRegionChangePacket;
 	private boolean experienceLocked;
+	private boolean QUEUE_SWITCHING_REFRESH;
 	private final Inventory inventory = new Inventory(this);
 	private final Equipment equipment = new Equipment(this);
 	private final PriceChecker priceChecker = new PriceChecker(this);
@@ -569,6 +571,7 @@ public class Player extends Character {
 	private boolean drainingPrayer;
 	private double prayerPointDrain;
 	private final Stopwatch clickDelay = new Stopwatch();
+	private final SecondsTimer TeleportDelay = new SecondsTimer();
 	private final Stopwatch lastItemPickup = new Stopwatch();
 	private WalkToTask walkToTask;
 	private EnterSyntax enterSyntax;
@@ -819,6 +822,14 @@ public class Player extends Character {
 		this.multiIcon = multiIcon;
 		return this;
 	}
+	public int getsingleIcon() {
+		return singleIcon;
+	}
+
+	public Player setsingleIcon(int singleIcon) {
+		this.singleIcon = singleIcon;
+		return this;
+	}
 
 	public Inventory getInventory() {
 		return inventory;
@@ -984,6 +995,9 @@ public class Player extends Character {
 
 	public Stopwatch getClickDelay() {
 		return clickDelay;
+	}
+	public SecondsTimer getTeleportDelay() {
+		return TeleportDelay;
 	}
 
 

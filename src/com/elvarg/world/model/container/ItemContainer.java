@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import com.elvarg.definitions.ItemDefinition;
 import com.elvarg.world.entity.impl.player.Player;
+import com.elvarg.world.model.EquipmentType;
 import com.elvarg.world.model.Item;
 import com.elvarg.world.model.PlayerRights;
 import com.elvarg.world.model.container.impl.Bank;
@@ -760,8 +761,8 @@ public abstract class ItemContainer {
 		items[slot] = item;
 	}
 
-	public Item get(int slot) {
-		return items[slot];
+	public Item get(int weapon) {
+		return items[weapon];
 	}
 
 	public boolean isSlotFree(int slot) {

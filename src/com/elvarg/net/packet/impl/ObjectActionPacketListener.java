@@ -2,6 +2,7 @@ package com.elvarg.net.packet.impl;
 
 import com.elvarg.Elvarg;
 import com.elvarg.definitions.ObjectDefinition;
+import com.elvarg.engine.task.Task;
 import com.elvarg.engine.task.TaskManager;
 import com.elvarg.engine.task.impl.ForceMovementTask;
 import com.elvarg.engine.task.impl.WalkToTask;
@@ -22,9 +23,11 @@ import com.elvarg.world.model.Graphic;
 import com.elvarg.world.model.MagicSpellbook;
 import com.elvarg.world.model.Position;
 import com.elvarg.world.model.Skill;
+import com.elvarg.world.model.SecondsTimer;
 import com.elvarg.world.model.Locations.Location;
 import com.elvarg.world.model.dialogue.DialogueManager;
 import com.elvarg.world.model.dialogue.DialogueOptions;
+
 
 
 
@@ -84,20 +87,37 @@ public class ObjectActionPacketListener implements PacketListener {
 					player.getBank(player.getCurrentBankTab()).open();
 					break;
 
+					case WEB:
+					player.performAnimation(new Animation(10261));
+					break;
+
 					case CANIFIS_BANK:
 					player.getBank(player.getCurrentBankTab()).open();
 					break;
 
 				case MAGEBANK_LEVER:
-					player.performAnimation(new Animation(2140, Priority.LOW));
+					player.performAnimation(new Animation(2140));
 					player.performGraphic(new Graphic(308));
+					TaskManager.submit(new Task(2, player, false) {
+					@Override
+					protected void execute() {
 					player.moveTo(new Position(3090, 3956));
+					stop();
+					}
+				});
 					break;
 
 					case MAGESAFE_LEVER:
-					player.performAnimation(new Animation(2140, Priority.LOW));
+					player.performAnimation(new Animation(2140));
 					player.performGraphic(new Graphic(308));
+					TaskManager.submit(new Task(2, player, false) {
+					@Override
+					protected void execute() {
 					player.moveTo(new Position(2539, 4712));
+					player.getPacketSender().sendMessage("You are teleported to the Wilderness.");
+					stop();
+				 }
+		 });
 					break;
 
 					case WILDY_PORTAL:
@@ -335,6 +355,7 @@ public class ObjectActionPacketListener implements PacketListener {
 	private static final int DITCH_PORTAL = 4151;
 	private static final int EDGEVILLE_BANK = 6943;
 	private static final int CANIFIS_BANK = 24347;
+	private static final int WEB = 11400;
 	private static final int MAGEBANK_LEVER = 5960;
 	private static final int MAGESAFE_LEVER = 5959;
 	private static final int BANK_CHEST = 2693;

@@ -408,7 +408,7 @@ public class BountyHunter {
 		}
 
 		//Update kda information..
-		player.getPacketSender().sendString(23329, "Targets killed: "+player.getTargetKills())
+		player.getPacketSender().sendString(23323, "Targets killed: "+player.getTargetKills())
 		.sendString(23324, "Players killed: "+player.getNormalKills())
 		.sendString(23325, "Deaths: "+player.getDeaths());
 	}
@@ -420,7 +420,7 @@ public class BountyHunter {
 	public static void onEnter(Player player) {
 		player.getPacketSender().sendInteractionOption("Attack", 2, true);
 		player.getPacketSender().sendInteractionOption("null", 1, false); //Remove challenge option
-		player.getPacketSender().sendWalkableInterface(164);
+		player.getPacketSender().sendWalkableInterface(23300);
 		updateInterface(player);
 		if(!PLAYERS_IN_WILD.contains(player)) {
 			PLAYERS_IN_WILD.add(player);

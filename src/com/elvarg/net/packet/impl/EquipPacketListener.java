@@ -10,7 +10,6 @@ import com.elvarg.util.Misc;
 import com.elvarg.world.content.Dueling.DuelRule;
 import com.elvarg.world.entity.combat.CombatSpecial;
 import com.elvarg.world.entity.combat.magic.Autocasting;
-import com.elvarg.world.entity.combat.magic.CombatSpells;
 import com.elvarg.world.entity.impl.player.Player;
 import com.elvarg.world.model.Flag;
 import com.elvarg.world.model.Item;
@@ -188,19 +187,9 @@ public class EquipPacketListener implements PacketListener {
 	public static void resetWeapon(Player player) {
 		player.setSpecialActivated(false);
 		WeaponInterfaces.assign(player);
-		Item weapon = player.getEquipment().getItems()[Equipment.WEAPON_SLOT];
-
-		//Check if player is using a trident. If so, set autocast to respective spell..
-		if(weapon.getId() == 11905) {
-			Autocasting.setAutocast(player, CombatSpells.TRIDENT_OF_THE_SEAS.getSpell());
-		} else if(weapon.getId() == 12899) {
-			Autocasting.setAutocast(player, CombatSpells.TRIDENT_OF_THE_SWAMP.getSpell());
-		} else {
-			//Otherwise always reset autocast when switching weapon
-			if(player.getCombat().getAutocastSpell() != null) {
-				Autocasting.setAutocast(player, null);
-				player.getPacketSender().sendMessage("Autocast spell cleared.");
-			}
+		if(player.getCombat().getAutocastSpell() != null) {
+			Autocasting.setAutocast(player, null);
+			player.getPacketSender().sendMessage("Autocast spell cleared.");
 		}
 	}
 }

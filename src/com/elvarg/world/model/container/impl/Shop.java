@@ -597,4 +597,5 @@ public class Shop extends ItemContainer {
 	public static final int GAMBLING_SHOP = 1;
 	public static final int GENERAL_SHOP = 2;
 	public static final int DONATOR_SHOP = 5;
+	public static final int DEEPWILD_SHOP = 6;
 }

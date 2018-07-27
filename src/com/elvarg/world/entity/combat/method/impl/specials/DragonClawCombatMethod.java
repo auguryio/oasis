@@ -56,7 +56,7 @@ public class DragonClawCombatMethod implements CombatMethod {
 
 	@Override
 	public int getAttackDistance(Character character) {
-		return 0;
+		return 1;
 	}
 
 	@Override

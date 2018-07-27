@@ -168,6 +168,14 @@ public class NPCOptionPacketListener implements PacketListener {
 					Shop.open(player, Shop.DONATOR_SHOP);
 					break;
 
+					case GUNDAI:
+					player.getBank(player.getCurrentBankTab()).open();
+					break;
+
+					case LANDAIL:
+					Shop.open(player, Shop.DEEPWILD_SHOP);
+					break;
+
 
 				}
 				npc.setPositionToFace(player.getPosition());
@@ -194,6 +202,18 @@ public class NPCOptionPacketListener implements PacketListener {
 
 				case EMBLEM_TRADER:
 					Shop.open(player, Shop.PVP_SHOP);
+					break;
+
+					case GUNDAI:
+					player.getBank(player.getCurrentBankTab()).open();
+					break;
+
+					case FAIRY:
+					Shop.open(player, Shop.DONATOR_SHOP);
+					break;
+
+					case LANDAIL:
+					Shop.open(player, Shop.DEEPWILD_SHOP);
 					break;
 
 				}
@@ -387,4 +407,7 @@ public class NPCOptionPacketListener implements PacketListener {
 	private static final int PARTY_PETE = 5792;
 	private static final int FAIRY = 521;
 	private static final int SHOP_KEEPER = 506;
+	private static final int GUNDAI = 1600;
+	private static final int LANDAIL = 1601;
+	
 }

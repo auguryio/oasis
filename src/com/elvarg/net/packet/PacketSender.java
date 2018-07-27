@@ -715,6 +715,13 @@ public class PacketSender {
 		player.setMultiIcon(value);
 		return this;
 	}
+	public PacketSender sendSingleIcon(int value) {
+		PacketBuilder out = new PacketBuilder(61);
+		out.put(value);
+		player.getSession().write(out);
+		player.setsingleIcon(value);
+		return this;
+	}
 
 	public PacketSender sendPrivateMessage(long name, PlayerRights rights, String message) {
 		PacketBuilder out = new PacketBuilder(196);

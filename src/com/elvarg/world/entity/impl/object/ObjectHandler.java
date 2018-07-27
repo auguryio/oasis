@@ -3,6 +3,7 @@ package com.elvarg.world.entity.impl.object;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import com.elvarg.definitions.ItemDefinition;
 import com.elvarg.world.World;
 import com.elvarg.world.collision.region.RegionClipping;
 import com.elvarg.world.entity.impl.player.Player;
@@ -153,4 +154,9 @@ public class ObjectHandler {
 	 * Spawn or despawn objects for entities within 70 squares of distance
 	 */
 	private static final int DISTANCE_SPAWN = 70;
+
+	public static ItemDefinition getDefinition() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
